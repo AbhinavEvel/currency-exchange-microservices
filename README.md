@@ -1,66 +1,52 @@
-# Currency Exchange Microservices
+# 💱 Currency Exchange & Conversion Microservices System
 
-A Spring Boot based Microservices application for handling currency exchange
-and currency conversion using independent services and service discovery.
-
-## 🚀 Overview
-
-This project demonstrates how a currency exchange application can be
-designed using a Microservices Architecture.
-
-Instead of building the complete application as a single monolithic service,
-the system is divided into multiple independent services. Each service is
-responsible for a specific business capability and can be developed,
-deployed, and maintained independently.
-## Technologies Used
-
-- Java
-- Spring Boot
-- Spring Cloud
-- Spring Data JPA
-- REST APIs
-- Netflix Eureka
-- Maven
-- Git & GitHub
-The project currently consists of:
-
-- Exchange Service
-- Conversion Service
-- User Service
-- Eureka Server
+A robust, scalable backend microservices system built using **Java 17**, **Spring Boot 3**, and **Spring Security with JWT Authentication**. This system handles currency rates management and currency conversion logic independently through decoupled microservices.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture Overview
 
-```text
-                    ┌─────────────────────┐
-                    │       Client        │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                 ┌─────────────────────────┐
-                 │   Conversion Service    │
-                 │       (Client)          │
-                 └──────────┬──────────────┘
-                            │
-                            │ Service-to-Service Call
-                            ▼
-                 ┌─────────────────────────┐
-                 │    Exchange Service     │
-                 │  Exchange Rate Logic    │
-                 └─────────────────────────┘
+The system consists of two primary microservices:
 
-                            ▲
-                            │
-                     Service Discovery
-                            │
-                 ┌─────────────────────────┐
-                 │      Eureka Server      │
-                 │   Service Registry      │
-                 └─────────────────────────┘
+1. **Currency Exchange Service**: Manages and stores exchange rates for various currency pairs (e.g., USD to INR, EUR to USD).
+2. **Currency Conversion Service**: Calculates converted amounts by communicating with the Exchange Service and handles secure access via **JWT (JSON Web Token)** authentication.
 
-                 ┌─────────────────────────┐
-                 │      User Service       │
-                 │    User Management      │
-                 └─────────────────────────┘
+---
+
+## ✨ Key Features
+
+- **JWT Authentication & Authorization**: Custom `JwtAuthFilter` and `JwtUtil` for stateless security.
+- **Microservices Communication**: Decoupled service architecture.
+- **Spring Security 6 Integration**: Context-aware request authentication with `SecurityContextHolder`.
+- **Database Persistence**: Spring Data JPA with relational database support (H2/PostgreSQL/MySQL).
+- **Clean Architecture**: Clear separation of concerns (Security, Controllers, Services, Entities).
+
+---
+
+## 🛠️ Tech Stack & Dependencies
+
+| Technology | Purpose |
+| :--- | :--- |
+| **Java 17+** | Primary Programming Language |
+| **Spring Boot 3** | Core Application Framework |
+| **Spring Security** | Application Security & Interceptors |
+| **JJWT (`io.jsonwebtoken`)** | Parsing & Validating JWT Tokens |
+| **Spring Data JPA** | Database Management & ORM |
+| **Maven** | Dependency & Build Management |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **JDK 17** or higher installed.
+- **Maven 3.8+** installed.
+- An API platform like **Postman** or **cURL** for testing endpoints.
+
+### ⚙️ Application Configuration
+
+Ensure your `application.properties` or `application.yml` file contains the JWT secret key:
+
+```properties
+# jwt settings
+jwt.secret=YourSuperSecretKeyHereWhichIsAtLeast256BitsLongForHMACSHA!
