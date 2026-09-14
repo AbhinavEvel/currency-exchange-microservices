@@ -12,7 +12,16 @@ Instead of building the complete application as a single monolithic service,
 the system is divided into multiple independent services. Each service is
 responsible for a specific business capability and can be developed,
 deployed, and maintained independently.
+## Technologies Used
 
+- Java
+- Spring Boot
+- Spring Cloud
+- Spring Data JPA
+- REST APIs
+- Netflix Eureka
+- Maven
+- Git & GitHub
 The project currently consists of:
 
 - Exchange Service
