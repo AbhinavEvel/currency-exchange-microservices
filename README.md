@@ -50,3 +50,40 @@ Ensure your `application.properties` or `application.yml` file contains the JWT 
 ```properties
 # jwt settings
 jwt.secret=YourSuperSecretKeyHereWhichIsAtLeast256BitsLongForHMACSHA!
+
+🔑 Authentication & Request Flow
+[ Client Request ] 
+       │
+       ▼  (Header: Authorization: Bearer <token>)
+[ JwtAuthFilter ] 
+       │
+       ├─► Extract Token & Validate via JwtUtil
+       ├─► Set Authentication in SecurityContext
+       │
+       ▼
+[ Controller / Protected Endpoint ] ──► Return Response
+📡 API Endpoints (Sample)
+1. Authentication
+POST /api/auth/login - Authenticate user credentials and receive a JWT token.
+
+2. Currency Exchange Service
+GET /currency-exchange/from/{from}/to/{to} - Fetch current exchange rate between two currencies.
+
+3. Currency Conversion Service (Protected)
+GET /currency-conversion/from/{from}/to/{to}/quantity/{quantity} - Calculate converted value (Requires JWT Header).
+
+🧪 Testing with Postman
+To access protected endpoints:
+
+Send a request to login to generate a valid token.
+
+In Postman, go to the Headers tab of your request and add:
+
+Key: Authorization
+
+Value: Bearer <YOUR_JWT_TOKEN>
+
+<ElicitationsGroup message="README me aur kya add karna chahte ho?">
+  <Elicitation label="Docker compose setup add karein?" query="Is README file me Docker support aur docker-compose configuration steps add kardo."/>
+  <Elicitation label="Spring Cloud / Eureka setup add karein?" query="Agar microservices me Eureka Naming Server use ho raha hai toh uske steps README me add kardo."/>
+</ElicitationsGroup>
