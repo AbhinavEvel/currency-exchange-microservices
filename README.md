@@ -83,7 +83,4 @@ Key: Authorization
 
 Value: Bearer <YOUR_JWT_TOKEN>
 
-<ElicitationsGroup message="README me aur kya add karna chahte ho?">
-  <Elicitation label="Docker compose setup add karein?" query="Is README file me Docker support aur docker-compose configuration steps add kardo."/>
-  <Elicitation label="Spring Cloud / Eureka setup add karein?" query="Agar microservices me Eureka Naming Server use ho raha hai toh uske steps README me add kardo."/>
-</ElicitationsGroup>
+
